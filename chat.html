@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harsha Laskshan — Portfolio</title>
+  <meta name="description" content="Portfolio of Harsha Laskshan — Software Engineering student and developer." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Anta&display=swap" rel="stylesheet">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-h20CPK1G2r2o3C0qvF3FqzZ0wG0q0v2sP2bL+1oQqfV1s2v9tYv7xq7Y9s2jvYkE3F7d2o1WJc0Z3xKxwQn2xw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+
+  <style>
+    :root{
+      --bg:#0b0f14;           /* dark base */
+      --bg-elev:#0f141b;      /* elevated cards */
+      --text:#d7e3f4;         /* light text */
+      --muted:#9fb3cc;        /* muted text */
+      --accent:#64b5f6;       /* light blue */
+      --accent-2:#89cff0;     /* soft blue */
+      --border:#15202c;       /* subtle borders */
+      --radius:16px;
+      --shadow:0 10px 25px rgba(0,0,0,.35);
+    }
+    html {
+  scroll-behavior: smooth;
+}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Ubuntu,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;scroll-behavior:smooth}
+    a{color:var(--accent);text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Layout */
+    .container{width:min(1100px,92%);margin-inline:auto}
+    section{padding:72px 0}
+    .pill{display:inline-flex;gap:8px;align-items:center;padding:6px 12px;border:1px solid var(--border);border-radius:999px;background:linear-gradient(145deg,#0e141c,#0a0e14);color:var(--muted);font-size:.9rem}
+
+    /* Nav */
+    header{position:sticky;top:0;z-index:50;background:rgba(11,15,20,.7);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#1b4b7a);box-shadow:inset 0 0 12px rgba(255,255,255,.15)}
+    .brand h1{font-family:Anta,Ubuntu,sans-serif;font-size:1.1rem;letter-spacing:.6px;margin:0}
+    nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+    nav a{color:var(--text);opacity:.85}
+    nav a:hover{color:var(--accent)}
+/* Hamburger button */
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--text);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Mobile menu */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: var(--bg-elev);
+    position: absolute;
+    top: 60px;
+    right: 16px;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+  }
+  nav ul.show {
+    display: flex;
+  }
+  .hamburger {
+    display: block;
+  }
+  .hid{
+     display: none;
+     visibility: hidden;
+     /* display: block; */
+  }
+}
+
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
+    .hero h2{font-family:Anta,Ubuntu,sans-serif;font-size:clamp(1.8rem,3vw+1rem,3rem);margin:0 0 12px}
+    .hero p{color:var(--muted);line-height:1.65}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+    .btn{padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:var(--bg-elev);color:var(--text);box-shadow:var(--shadow);transition:transform .15s ease, box-shadow .2s ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(14,100,180,.25)}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),#1a77d2);border-color:transparent;color:#071019}
+    .hero-card{border:1px solid var(--border);background:radial-gradient(1200px 400px at 0% -10%,rgba(100,181,246,.15),transparent 55%),var(--bg-elev);padding:24px;border-radius:var(--radius)}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .hero-img{justify-self:end;max-width:360px;border-radius:24px;border:1px solid var(--border);box-shadow:0 30px 60px rgba(0,0,0,.45)}
+    .tagline{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+
+    @media (max-width:900px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero-img{justify-self:center;max-width:85%}
+    }
+
+    /* Section titles */
+    .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+    .section-head h3{font-family:Anta,Ubuntu,sans-serif;font-size:1.6rem;margin:0}
+    .sub{color:var(--muted);font-size:.95rem}
+
+    /* Skills */
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .skill{background:var(--bg-elev);border:1px solid var(--border);border-radius:16px;padding:16px;display:flex;gap:12px;align-items:center}
+    .skill i{font-size:28px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .chip{padding:6px 10px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:.85rem}
+
+    /* Education timeline (tree style) */
+    .timeline{position:relative;margin-left:8px;padding-left:24px}
+    .timeline:before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(var(--accent),transparent)}
+    .node{position:relative;margin:0 0 18px 0;padding-left:14px}
+    .node:before{content:"";position:absolute;left:-2px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(100,181,246,.15)}
+    .node h4{margin:0 0 6px}
+    .node p{margin:0;color:var(--muted)}
+
+    /* Projects */
+    .projects{display:grid;gap:18px}
+    .project{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center;background:var(--bg-elev);border:1px solid var(--border);border-radius:18px;padding:16px}
+    /* .project:nth-child(even){grid-template-columns:.9fr 1.1fr} */
+    .project .visual{border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+    .project img{width:100%;height:100%;object-fit:cover}
+    .project h4{margin:0 0 8px}
+    .project p{color:var(--muted)}
+    .project .tags{margin-top:10px}
+
+    @media (max-width:900px){
+      .project{grid-template-columns:1fr}
+      .project:nth-child(even){grid-template-columns:1fr}
+    }
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .gallery a{display:block;position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+    .gallery a:after{content:"\f00e";font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;right:10px;bottom:10px;background:rgba(7,16,25,.7);padding:6px 8px;border-radius:8px}
+
+    /* Contact */
+    form{display:grid;gap:12px}
+    input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:#0a1017;color:var(--text)}
+    textarea{min-height:140px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:700px){.form-row{grid-template-columns:1fr}}
+
+    /* Footer */
+    footer{border-top:1px solid var(--border);padding:32px 0;color:var(--muted)}
+
+    /* Scroll animations */
+    .reveal{opacity:0;transform:translateY(22px);}
+    .reveal.in{animation:fadeSlideUp .6s cubic-bezier(.2,.65,.2,1) forwards}
+    .reveal.out-reverse{animation:fadeSlideUp .45s cubic-bezier(.2,.65,.2,1) reverse forwards}
+    @keyframes fadeSlideUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+    /* Utility */
+    .muted{color:var(--muted)}
+    .spacer{height:8px}
+    .icon-list{display:flex;gap:10px;flex-wrap:wrap}
+    .icon-list i{font-size:22px;opacity:.9}
+
+    @media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  /* Show image first in mobile */
+  .hero-grid > div:first-child {
+    order: 2;
+  }
+  .hero-grid > div:last-child {
+    order: 1;
+  }
+  .just{
+    text-align: justify;
+  }
+  .cent{
+    text-align: center;
+  }
+}
+.intro {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0 0 8px 0;  /* reduce space before h2 */
+  display: flex;
+  align-items: center;
+  gap: 6px;           /* small gap between text and gif */
+}
+
+.intro .wave {
+  width: 28px;        /* resize gif */
+  height: auto;
+}
+
+
+    
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Harsha Laskshan</h1>
+      </div>
+      <button class="hamburger" id="menu-btn" aria-label="Toggle Menu"><i class="fa-solid fa-bars"></i></button>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#designs">Designs</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="home" class="container">
+    <section class="hero">
+      <div class="hero-grid hero-card reveal">
+        <div> 
+            <p class="intro hid" >
+                Hi there <img src="https://em-content.zobj.net/source/microsoft-teams/337/waving-hand_1f44b.png" alt="👋" class="wave">
+            </p>
+          <h2 class="cent">Bringing ideas to life with clean code & thoughtful design.</h2>
+          <p class="just">
+            I’m Harsha — a full‑stack‑leaning developer focused on performant, accessible web experiences.
+            I love building with <strong>HTML, CSS, JavaScript, Java, C#, and React</strong>, and I enjoy crafting visuals in <strong>Photoshop, Figma, and Canva</strong>.
+          </p>
+          <div class="tagline ">
+            <span class="pill hid"><i class="fa-solid fa-graduation-cap"></i> BSc (Hons) Software Engineering — University of Plymouth </span>
+            <span class="pill hid"><i class="fa-solid fa-people-group"></i> Frontend developer</span>
+            <span class="pill hid"><i class="fa-solid fa-baseball"></i> UI/UX Designer</span>
+            <span class="pill hid"><i class="fa-solid fa-baseball"></i> Graphic Designer</span>
+          </div>
+          <div class="cta">
+            <a class="btn primary" href="#projects"><i class="fa-solid fa-rocket"></i> See Projects</a>
+            <a class="btn" href="#contact"><i class="fa-regular fa-envelope"></i> Contact Me</a>
+          </div>
+        </div>
+        <div>
+          <!-- Replace src with your actual image path -->
+          <img class="hero-img" src="hero2.jpg" alt="Portrait of Harsha Laskshan" />
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-head">
+        <h3 class="reveal">Skills</h3>
+        <p class="sub reveal hid">Frontend, backend, and design — with tools I use daily.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill reveal">
+          <!-- <i class="devicon-html5-plain colored" title="HTML5"></i> -->
+          <div>
+            <strong>Frontend Development</strong>
+            <div class="chips">
+              <span class="chip">HTML</span>
+              <span class="chip">CSS</span>
+              <span class="chip">Tailwind</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">React</span>
+              <span class="chip">Responsive UI</span>
+            </div>
+            <div class="icon-list" aria-label="Frontend icons">
+              <i class="devicon-css3-plain colored" title="CSS3"></i>
+              <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+              <i class="devicon-react-original colored" title="React"></i>
+              <i class="devicon-tailwindcss-original colored" title="Tailwind CSS"></i>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="skill reveal">
+          <!-- <i class="devicon-java-plain colored" title="Java"></i> -->
+          <div>
+            <strong>Backend Development</strong>
+            <div class="chips">
+              <span class="chip">Java</span>
+              <span class="chip">C#</span>
+              <span class="chip">Python</span>
+              <span class="chip">Node JS</span>
+              <span class="chip">SQL</span>
+              <span class="chip">APIs</span>
+              <span class="chip">Auth</span>
+            </div>
+            <div class="icon-list" aria-label="Backend icons">
+              <i class="devicon-csharp-plain colored" title="C#"></i>
+              <i class="devicon-php-plain colored" title="PHP"></i>
+              <i class="devicon-python-plain colored" title="Python"></i>
+              <i class="devicon-nodejs-plain colored" title="Node.js"></i>
+              <i class="fa-solid fa-gears" title="APIs"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill reveal">
+          <i class="fa-solid fa-pen-nib" title="Design"></i>
+          <div>
+            <strong>Design & Marketing</strong>
+            <div class="chips">
+              <span class="chip">Photoshop</span>
+              <span class="chip">Figma</span>
+              <span class="chip">Canva</span>
+              <span class="chip">Poster Design</span>
+              <span class="chip">Social Media Marketing</span>
+            </div>
+            <div class="icon-list" aria-label="Backend icons">
+              <i class="devicon-photoshop-plain colored" title="Photoshop"></i>
+              <i class="devicon-figma-plain colored" title="Figma"></i>
+              <i class="devicon-sketch-plain colored" title="Canva"></i>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION (Tree/Timeline) -->
+    <section id="education">
+      <div class="section-head">
+        <h3 class="reveal">Education</h3>
+        <p class="sub reveal hid">A quick path of where I studied.</p>
+      </div>
+      <div class="timeline">
+        <div class="node reveal">
+          <h4>University of Plymouth — BSc (Hons) Software Engineering <span class="muted">(2023–Present)</span></h4>
+          <p>Active member of FOSS & IEEE clubs · University cricket team</p><br>
+          <p style="text-align: justify;">Studied a wide range of technologies, including C, Web Development, Linux, Java, and C#. Completed various projects while actively participating in extracurricular activities such as chess and cricket. Led team-based projects, participated in Capture the Flag (CTF) challenges, and secured positions in the top three in several challenges and ranked in the top 10 in most, showcasing strong leadership and problem-solving skills..</p>
+        </div>
+        <div class="node reveal">
+          <h4>Ibbagamuwa Central College — Advanced Level <span class="muted">(2019–2022)</span></h4>
+          <p>STEM focus · School cricket team</p><br>
+          <p style="text-align: justify;"> Focused on combined Mathematics, Physics, and Chemistry. I developed a strong foundation in analytical thinking and problem-solving, preparing me for higher education in computer science.</p>
+        </div>
+        <div class="node reveal">
+          <h4>Ibbagamuwa Central College — Ordinary Level <span class="muted">(2013–2019)</span></h4>
+          <p>School cricket team</p><br>
+          <p style="text-align: justify;">Achieved remarkable success with 9 A's in the Ordinary Level exams, demonstrating excellence in a range of subjects.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS (Alternating) -->
+    <section id="projects">
+      <div class="section-head">
+        <h3 class="reveal">Projects</h3>
+        <p class="sub reveal hid">Alternating layout with visuals and short descriptions.</p>
+      </div>
+      <div class="projects">
+        <!-- Project 1 -->
+        <article class="project reveal">
+          <div class="visual">
+            <!-- Replace with your project image -->
+            <img src="assets/p1.png" alt="Screenshot of Project One"/>
+          </div>
+          <div>
+            <h4>Project One — <span class="muted">Web App</span></h4>
+            <p>Brief description about what the project does, your role, and the impact/outcome. Keep it 2–3 lines.</p>
+            <div class="tags chips">
+              <span class="chip">React</span>
+              <span class="chip">API</span>
+              <span class="chip">Auth</span>
+            </div>
+            <div class="cta" style="margin-top:12px">
+              <a class="btn" href="#"><i class="fa-brands fa-github"></i> Code</a>
+              <a class="btn" href="#"><i class="fa-solid fa-link"></i> Live</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 (auto reversed by CSS) -->
+        <article class="project reveal">
+          <div class="visual">
+            <!-- Replace with your project image -->
+            <img src="assets/p2.png" alt="Screenshot of Project One"/>
+          </div>
+          <div>
+            <h4>Project One — <span class="muted">Web App</span></h4>
+            <p>Brief description about what the project does, your role, and the impact/outcome. Keep it 2–3 lines.</p>
+            <div class="tags chips">
+              <span class="chip">React</span>
+              <span class="chip">API</span>
+              <span class="chip">Auth</span>
+            </div>
+            <div class="cta" style="margin-top:12px">
+              <a class="btn" href="#"><i class="fa-brands fa-github"></i> Code</a>
+              <a class="btn" href="#"><i class="fa-solid fa-link"></i> Live</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project reveal">
+          <div class="visual">
+            <img src="assets/p3.png" alt="Screenshot of Project Three"/>
+          </div>
+          <div>
+            <h4>Project Three — <span class="muted">Backend Service</span></h4>
+            <p>APIs, authentication, databases, and how you ensured reliability. Mention any metrics if available.</p>
+            <div class="tags chips">
+              <span class="chip">Java</span>
+              <span class="chip">C#</span>
+              <span class="chip">REST</span>
+            </div>
+            <div class="cta" style="margin-top:12px">
+              <a class="btn" href="#"><i class="fa-brands fa-github"></i> Code</a>
+              <a class="btn" href="#"><i class="fa-solid fa-link"></i> Live</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- DESIGNS (Gallery) -->
+    <section id="designs">
+      <div class="section-head">
+        <h3 class="reveal">Designs</h3>
+        <p class="sub reveal hid">A gallery of posters and social graphics I’ve created.</p>
+      </div>
+      <div class="gallery">
+        <!-- Replace href/src with your images -->
+        <a class="reveal" href="assets/post1.png" target="_blank"><img src="assets/post1.png" alt="Design 1" /></a>
+        <a class="reveal" href="assets/post2.png" target="_blank"><img src="assets/post2.png" alt="Design 2" /></a>
+        <a class="reveal" href="assets/post3.png" target="_blank"><img src="assets/post3.png" alt="Design 3" /></a>
+        <a class="reveal" href="assets/post4.png" target="_blank"><img src="assets/post4.png" alt="Design 4" /></a>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-head">
+        <h3 class="reveal">Contact Me</h3>
+        <p class="sub reveal hid">Let’s build something great together.</p>
+      </div>
+      <div class="hero-card reveal">
+        <form onsubmit="event.preventDefault(); alert('Thanks! I\'ll get back to you soon.');">
+          <div class="form-row">
+            <label>
+              <span class="muted">Your name</span>
+              <input type="text" placeholder="Jane Doe" required />
+            </label>
+            <label>
+              <span class="muted">Email</span>
+              <input type="email" placeholder="jane@email.com" required />
+            </label>
+          </div>
+          <label>
+            <span class="muted">Message</span>
+            <textarea placeholder="Tell me about your project..."></textarea>
+          </label>
+          <button class="btn primary" type="submit"><i class="fa-regular fa-paper-plane"></i> Send</button>
+          <div class="spacer"></div>
+          <div class="icon-list" aria-label="Social links">
+            <!-- Replace # with your actual profiles -->
+            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#" aria-label="Portfolio"><i class="fa-solid fa-globe"></i></a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <p>© <span id="year"></span> Harsha Laskshan. All rights reserved.</p>
+        <p class="muted">Built with ❤️ using HTML, CSS & JS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scroll direction detection
+    let lastY = window.scrollY;
+    let scrollingUp = false;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      scrollingUp = y < lastY;
+      lastY = y;
+    }, {passive:true});
+
+    // Intersection Observer for reveal animations
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry => {
+        const el = entry.target;
+        if (entry.isIntersecting) {
+          el.classList.remove('out-reverse');
+          el.classList.add('in');
+        } else {
+          // When leaving viewport, if user is scrolling up, play reverse animation
+          if (scrollingUp) {
+            el.classList.remove('in');
+            el.classList.add('out-reverse');
+          }
+        }
+      });
+    },{threshold:0.2});
+
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+  <script>
+  const menuBtn = document.getElementById('menu-btn');
+  const navLinks = document.getElementById('nav-links');
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
+</script>
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>
