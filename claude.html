@@ -771,6 +771,10 @@
             z-index: 10001;
             transition: width 0.1s ease;
         }
+        .hero-container {
+    transition: opacity 3s ease, transform 0.6s ease;
+}
+
     </style>
 </head>
 <body>
@@ -817,7 +821,7 @@
                 </div>
             </div>
             <div class="hero-image fade-in-right">
-                <img src="https://via.placeholder.com/300x300/64b5f6/ffffff?text=Your+Photo" alt="Harsha Laskshan">
+                <img src="hero.jpg" alt="Harsha Laskshan">
             </div>
         </div>
     </section>
@@ -940,7 +944,7 @@
         
         <div class="project fade-in-up">
             <div class="project-image">
-                <img src="https://via.placeholder.com/500x300/1e2a3a/64b5f6?text=Project+1" alt="Project 1">
+                <img src="assets/p1.png" alt="Project 1">
             </div>
             <div class="project-content">
                 <h3 class="project-title">E-Commerce Platform</h3>
@@ -960,7 +964,7 @@
 
         <div class="project fade-in-up">
             <div class="project-image">
-                <img src="https://via.placeholder.com/500x300/1e2a3a/64b5f6?text=Project+3" alt="Project 3">
+                <img src="assets/p3.png" alt="Project 3">
             </div>
             <div class="project-content">
                 <h3 class="project-title">University Management System</h3>
@@ -987,37 +991,37 @@
         <h2 class="section-title">Design Gallery</h2>
         <div class="gallery-grid">
             <div class="gallery-item fade-in-up">
-                <img src="https://via.placeholder.com/400x400/1e2a3a/64b5f6?text=Design+1" alt="Design 1">
+                <img src="assets/post1.png" alt="Design 1">
                 <div class="gallery-overlay">
                     <i class="fas fa-eye" style="font-size: 2rem; color: white;"></i>
                 </div>
             </div>
             <div class="gallery-item fade-in-up">
-                <img src="https://via.placeholder.com/400x400/1e2a3a/64b5f6?text=Design+2" alt="Design 2">
+                <img src="assets/post1.png" alt="Design 2">
                 <div class="gallery-overlay">
                     <i class="fas fa-eye" style="font-size: 2rem; color: white;"></i>
                 </div>
             </div>
             <div class="gallery-item fade-in-up">
-                <img src="https://via.placeholder.com/400x400/1e2a3a/64b5f6?text=Design+3" alt="Design 3">
+                <img src="assets/post1.png" alt="Design 3">
                 <div class="gallery-overlay">
                     <i class="fas fa-eye" style="font-size: 2rem; color: white;"></i>
                 </div>
             </div>
             <div class="gallery-item fade-in-up">
-                <img src="https://via.placeholder.com/400x400/1e2a3a/64b5f6?text=Design+4" alt="Design 4">
+                <img src="assets/post1.png" alt="Design 4">
                 <div class="gallery-overlay">
                     <i class="fas fa-eye" style="font-size: 2rem; color: white;"></i>
                 </div>
             </div>
             <div class="gallery-item fade-in-up">
-                <img src="https://via.placeholder.com/400x400/1e2a3a/64b5f6?text=Design+5" alt="Design 5">
+                <img src="assets/post1.png" alt="Design 5">
                 <div class="gallery-overlay">
                     <i class="fas fa-eye" style="font-size: 2rem; color: white;"></i>
                 </div>
             </div>
             <div class="gallery-item fade-in-up">
-                <img src="https://via.placeholder.com/400x400/1e2a3a/64b5f6?text=Design+6" alt="Design 6">
+                <img src="assets/post1.png" alt="Design 6">
                 <div class="gallery-overlay">
                     <i class="fas fa-eye" style="font-size: 2rem; color: white;"></i>
                 </div>
@@ -1306,5 +1310,28 @@
             });
         });
     </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const hero = document.querySelector(".hero-container");
+        const skills = document.querySelector("#skills");
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Hide hero when skills section appears
+                    hero.style.opacity = "0";
+                    hero.style.transform = "translateY(-50px)";
+                } else {
+                    // Show hero again when skills is not visible
+                    hero.style.opacity = "1";
+                    hero.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.2 }); // 20% of skills visible triggers
+
+        observer.observe(skills);
+    });
+</script>
+
 </body>
 </html>
